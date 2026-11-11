@@ -67,5 +67,7 @@ class MetaDemonAssets:
 	O_MD_FULL_NAME = RuleOcr(roi=(479,116,100,217), area=(479,116,100,217), mode="Full", method="Default", keyword="", name="md_full_name")
 	# 判断别人是否给鬼王 
 	O_BOSS_EMPTY_1 = RuleOcr(roi=(141,400,94,32), area=(141,400,94,32), mode="Single", method="Default", keyword="剩余时间", name="boss_empty_1")
+	# 超鬼王活动封面入口 
+	O_MD_COVER_ENTRY = RuleOcr(roi=(986,184,38,78), area=(986,184,38,78), mode="Single", method="Default", keyword="超鬼王", name="md_cover_entry")
 
 

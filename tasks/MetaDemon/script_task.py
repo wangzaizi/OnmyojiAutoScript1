@@ -87,6 +87,11 @@ class ScriptTask(RightActivity, GeneralBattle, SwitchSoul, Star56):
             if self.appear(self.I_FIND_DEMON) or self.appear(self.I_BATTLE_DEMON):
                 break
 
+            # 新版超鬼王封面页：识别并点击右侧“超鬼王”标题区域进入活动
+            if self.ocr_appear_click(self.O_MD_COVER_ENTRY):
+                logger.info('MetaDemon cover entry detected and clicked')
+                continue
+
             if self.ui_reward_appear_click():
                 continue
             if self.appear_then_click(self.I_UI_BACK_RED, interval=1.5):
@@ -294,7 +299,6 @@ class ScriptTask(RightActivity, GeneralBattle, SwitchSoul, Star56):
 if __name__ == '__main__':
     from module.config.config import Config
     from module.device.device import Device
-
     c = Config('体服')
     d = Device(c)
     t = ScriptTask(c, d)
