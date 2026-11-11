@@ -160,5 +160,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "已公开"
+  },
+  {
+    "itemName": "find_demon_enter",
+    "imageName": "md_find_demon_enter.png",
+    "roiFront": "986,184,38,78",
+    "roiBack": "966,164,78,118",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "寻找鬼王前的超鬼王入口"
   }
 ]

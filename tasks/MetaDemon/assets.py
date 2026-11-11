@@ -52,19 +52,26 @@ class MetaDemonAssets:
 	I_ENTER_ENSURE = RuleImage(roi_front=(541,578,186,48), roi_back=(443,555,370,100), threshold=0.8, method="Template matching", file="./tasks/MetaDemon/md/md_enter_ensure.png")
 	# 已公开 
 	I_BOOS_PUBLIC = RuleImage(roi_front=(251,155,47,52), roi_back=(228,127,88,90), threshold=0.8, method="Template matching", file="./tasks/MetaDemon/md/md_boos_public.png")
+	# 寻找鬼王前的超鬼王入口
+	I_FIND_DEMON_ENTER = RuleImage(roi_front=(986,184,38,78), roi_back=(966,164,78,118), threshold=0.8, method="Template matching", file="./tasks/MetaDemon/md/md_find_demon_enter.png")
 
 
 	# Ocr Rule Assets
 	# Ocr-description 
 	O_MD_EXHAUSTION = RuleOcr(roi=(1114,24,94,31), area=(1114,24,94,31), mode="DigitCounter", method="Default", keyword="", name="md_exhaustion")
+	# Ocr Rule Assets 
 	# Ocr-description 
 	O_MD_TICKET = RuleOcr(roi=(923,18,82,30), area=(923,18,82,30), mode="DigitCounter", method="Default", keyword="", name="md_ticket")
+	# Ocr Rule Assets 
 	# Ocr-description 
 	O_MD_COUNT_INFO = RuleOcr(roi=(94,314,161,37), area=(94,314,161,37), mode="Single", method="Default", keyword="击败奖励结算中", name="md_count_info")
+	# Ocr Rule Assets 
 	# 一星卡 
 	O_CRAFTING_CARD_1 = RuleOcr(roi=(303,158,161,33), area=(303,158,161,33), mode="Single", method="Default", keyword="一星梦告铃鼓", name="crafting_card_1")
+	# Ocr Rule Assets 
 	# 式神全名 
 	O_MD_FULL_NAME = RuleOcr(roi=(479,116,100,217), area=(479,116,100,217), mode="Full", method="Default", keyword="", name="md_full_name")
+	# Ocr Rule Assets 
 	# 判断别人是否给鬼王 
 	O_BOSS_EMPTY_1 = RuleOcr(roi=(141,400,94,32), area=(141,400,94,32), mode="Single", method="Default", keyword="剩余时间", name="boss_empty_1")
 
