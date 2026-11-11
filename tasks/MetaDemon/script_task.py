@@ -88,8 +88,10 @@ class ScriptTask(RightActivity, GeneralBattle, SwitchSoul, Star56):
                 break
 
             # 过渡封面中间的“超鬼王”入口，匹配后点击进入鬼王列表
-            if self.appear_then_click(self.I_FIND_DEMON_ENTER, interval=1.5):
-                logger.info('MetaDemon cover entry detected and clicked')
+            if self.appear(self.I_FIND_DEMON_ENTER):
+                logger.info('MetaDemon cover entry image matched, clicking')
+                self.click(self.I_FIND_DEMON_ENTER, interval=1.5)
+                sleep(3)
                 continue
 
             if self.ui_reward_appear_click():
