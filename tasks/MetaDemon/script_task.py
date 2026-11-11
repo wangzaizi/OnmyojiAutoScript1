@@ -82,17 +82,30 @@ class ScriptTask(RightActivity, GeneralBattle, SwitchSoul, Star56):
                                          self.config.meta_demon.switch_soul.team_name)
 
         self.enter(self.I_RIGHT_ENTER)
+        cover_entry_attempts = 0
+        cover_entry_retry_exhausted = False
         while 1:
             self.screenshot()
             if self.appear(self.I_FIND_DEMON) or self.appear(self.I_BATTLE_DEMON):
                 break
 
-            # 过渡封面中间的“超鬼王”入口，匹配后点击进入鬼王列表
-            if self.appear(self.I_FIND_DEMON_ENTER):
-                logger.info('MetaDemon cover entry image matched, clicking')
-                self.click(self.I_FIND_DEMON_ENTER, interval=1.5)
+            # 新版封面中间的“超鬼王”入口：匹配前等待，最多尝试 5 次；点击后等待页面切换。
+            if cover_entry_attempts < 5:
                 sleep(3)
-                continue
+                cover_entry_attempts += 1
+                if self.appear(self.I_FIND_DEMON_ENTER):
+                    logger.info(
+                        f'MetaDemon cover entry image matched '
+                        f'(attempt {cover_entry_attempts}/5), clicking')
+                    self.click(self.I_FIND_DEMON_ENTER, interval=1.5)
+                    sleep(3)
+                    continue
+                logger.warning(
+                    f'MetaDemon cover entry image not matched '
+                    f'(attempt {cover_entry_attempts}/5)')
+            elif not cover_entry_retry_exhausted:
+                logger.warning('MetaDemon cover entry retry limit reached (5 attempts)')
+                cover_entry_retry_exhausted = True
 
             if self.ui_reward_appear_click():
                 continue
