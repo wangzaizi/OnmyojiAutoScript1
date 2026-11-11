@@ -52,5 +52,14 @@
     "method": "Default",
     "keyword": "剩余时间",
     "description": "判断别人是否给鬼王"
+  },
+  {
+    "itemName": "md_cover_entry",
+    "roiFront": "986,184,38,78",
+    "roiBack": "986,184,38,78",
+    "mode": "Single",
+    "method": "Default",
+    "keyword": "超鬼王",
+    "description": "超鬼王活动封面入口"
   }
 ]
