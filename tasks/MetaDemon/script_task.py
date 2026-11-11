@@ -82,30 +82,12 @@ class ScriptTask(RightActivity, GeneralBattle, SwitchSoul, Star56):
                                          self.config.meta_demon.switch_soul.team_name)
 
         self.enter(self.I_RIGHT_ENTER)
-        cover_entry_attempts = 0
-        cover_entry_retry_exhausted = False
+        cover_entry_click_count = 0
         while 1:
             self.screenshot()
             if self.appear(self.I_FIND_DEMON) or self.appear(self.I_BATTLE_DEMON):
+                logger.info('MetaDemon find-demon page detected')
                 break
-
-            # 新版封面中间的“超鬼王”入口：匹配前等待，最多尝试 5 次；点击后等待页面切换。
-            if cover_entry_attempts < 5:
-                sleep(3)
-                cover_entry_attempts += 1
-                if self.appear(self.I_FIND_DEMON_ENTER):
-                    logger.info(
-                        f'MetaDemon cover entry image matched '
-                        f'(attempt {cover_entry_attempts}/5), clicking')
-                    self.click(self.I_FIND_DEMON_ENTER, interval=1.5)
-                    sleep(3)
-                    continue
-                logger.warning(
-                    f'MetaDemon cover entry image not matched '
-                    f'(attempt {cover_entry_attempts}/5)')
-            elif not cover_entry_retry_exhausted:
-                logger.warning('MetaDemon cover entry retry limit reached (5 attempts)')
-                cover_entry_retry_exhausted = True
 
             if self.ui_reward_appear_click():
                 continue
@@ -115,6 +97,16 @@ class ScriptTask(RightActivity, GeneralBattle, SwitchSoul, Star56):
                 continue
             if self.appear_then_click(self.I_ENTER2, interval=1):
                 continue
+
+            # 不做图片匹配，直接点击封面入口的大致中心位置；未到找鬼王页就继续重试。
+            cover_entry_click_count += 1
+            logger.info(
+                f'Not on MetaDemon find-demon page; direct-click cover entry '
+                f'(attempt {cover_entry_click_count})')
+            sleep(3)
+            self.device.click(x=1021, y=234, control_name='MD_FIND_DEMON_ENTER')
+            sleep(3)
+
         if self.config.meta_demon.meta_demon_config.meta_crafting_card:
             self.crafting()
 
