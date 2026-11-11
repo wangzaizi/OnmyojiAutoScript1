@@ -53,7 +53,7 @@ class MetaDemonAssets:
 	# 已公开 
 	I_BOOS_PUBLIC = RuleImage(roi_front=(251,155,47,52), roi_back=(228,127,88,90), threshold=0.8, method="Template matching", file="./tasks/MetaDemon/md/md_boos_public.png")
 	# 寻找鬼王前的超鬼王入口
-	I_FIND_DEMON_ENTER = RuleImage(roi_front=(986,184,38,78), roi_back=(966,164,78,118), threshold=0.8, method="Template matching", file="./tasks/MetaDemon/md/md_find_demon_enter.png")
+	I_FIND_DEMON_ENTER = RuleImage(roi_front=(986,184,70,100), roi_back=(940,150,180,180), threshold=0.8, method="Template matching", file="./tasks/MetaDemon/md/md_find_demon_enter.png")
 
 
 	# Ocr Rule Assets

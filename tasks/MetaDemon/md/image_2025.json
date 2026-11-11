@@ -164,8 +164,8 @@
   {
     "itemName": "find_demon_enter",
     "imageName": "md_find_demon_enter.png",
-    "roiFront": "986,184,38,78",
-    "roiBack": "966,164,78,118",
+    "roiFront": "986,184,70,100",
+    "roiBack": "940,150,180,180",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "寻找鬼王前的超鬼王入口"
